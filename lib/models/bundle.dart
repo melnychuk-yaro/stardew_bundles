@@ -3,9 +3,14 @@ import 'package:stardrew_bundles/models/resource.dart';
 
 class Bundle {
   final String title;
-  final ImageProvider image;
+  final String image;
   final List<Resource> resources;
   bool isComleted;
 
-  Bundle({this.title, this.image, this.resources, this.isComleted = false});
+  Bundle({
+    @required this.title,
+    this.image = 'assets/images/bundles/Bundle_Green.png',
+    this.resources,
+    this.isComleted = false,
+  });
 }

@@ -21,8 +21,13 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.lightGreen[100],
           primarySwatch: Colors.blueGrey,
           visualDensity: VisualDensity.adaptivePlatformDensity,
+          fontFamily: 'VT323',
+          splashFactory: InkRipple.splashFactory,
         ),
-        home: RoomsScreen(),
+        initialRoute: '/',
+        routes: {
+          '/': (_) => RoomsScreen(),
+        },
       ),
     );
   }

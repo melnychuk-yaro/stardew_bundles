@@ -9,16 +9,23 @@ class RoomCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 4,
+      clipBehavior: Clip.antiAlias,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(24.0),
+      ),
       margin: EdgeInsets.all(8.0),
       child: GridTile(
-        child: Image.asset(
-          'assets/images/rooms/Community_Center_Crafts_Room.png',
-          fit: BoxFit.cover,
-        ),
+        child: Image.asset(room.image, fit: BoxFit.cover),
         footer: Container(
           color: Color(0xAAFFFFFF),
           width: double.infinity,
-          child: Text(room.title, textAlign: TextAlign.center),
+          padding: EdgeInsets.symmetric(vertical: 8.0),
+          child: Text(
+            room.title,
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 24.0),
+          ),
         ),
       ),
     );
