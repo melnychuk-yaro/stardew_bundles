@@ -15,18 +15,33 @@ class RoomCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(24.0),
       ),
       margin: EdgeInsets.all(8.0),
-      child: GridTile(
-        child: Image.asset(room.image, fit: BoxFit.cover),
-        footer: Container(
-          color: Color(0xAAFFFFFF),
-          width: double.infinity,
-          padding: EdgeInsets.symmetric(vertical: 8.0),
-          child: Text(
-            room.title,
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 24.0),
+      child: Stack(
+        children: [
+          GridTile(
+            child: Image.asset(room.image, fit: BoxFit.cover),
+            footer: Container(
+              color: Color(0xAAFFFFFF),
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(vertical: 8.0),
+              child: Text(
+                room.title,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 24.0),
+              ),
+            ),
           ),
-        ),
+          if (room.isCompleted)
+            Container(
+              color: Color(0x77FFFFFF),
+              child: Center(
+                child: Icon(
+                  Icons.done,
+                  size: 48.0,
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
+            ),
+        ],
       ),
     );
   }

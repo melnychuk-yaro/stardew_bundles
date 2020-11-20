@@ -60,17 +60,14 @@ class BundlesData with ChangeNotifier {
   List<Room> get rooms => _rooms;
   int get roomsCount => _rooms.length;
 
-  void toggleIsCompletedResource(Resource resource) {
+  void toggleIsCompletedResource(Resource resource, Bundle bundle, Room room) {
     resource.toggleIsCompleted();
+    bundle.checkBundleIsCompleted();
+    room.checkRoomIsCompleted();
     notifyListeners();
   }
 
   bool isCompletedResource(Resource resource) => resource.isCompleted;
-
-  void checkBundleIsCompleted(Bundle bundle) {
-    bundle.checkBundleIsCompleted();
-    notifyListeners();
-  }
-
   bool isCompletedBundle(Bundle bundle) => bundle.isCompleted;
+  bool isCompletedRoom(Room room) => room.isCompleted;
 }

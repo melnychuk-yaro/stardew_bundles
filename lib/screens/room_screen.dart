@@ -31,7 +31,7 @@ class RoomScreen extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 12.0),
                     child: Row(
                       children: [
-                        Text('bundle.title', style: TextStyle(fontSize: 32.0)),
+                        Text(bundle.title, style: TextStyle(fontSize: 32.0)),
                         Padding(
                           padding: const EdgeInsets.only(left: 8.0),
                           child: isBunleCompleted
@@ -48,9 +48,9 @@ class RoomScreen extends StatelessWidget {
                         value: context
                             .watch<BundlesData>()
                             .isCompletedResource(resource),
-                        onChanged: (_) => context.read<BundlesData>()
-                          ..toggleIsCompletedResource(resource)
-                          ..checkBundleIsCompleted(bundle),
+                        onChanged: (_) => context
+                            .read<BundlesData>()
+                            .toggleIsCompletedResource(resource, bundle, room),
                       );
                     }).toList(),
                   ),
@@ -63,7 +63,11 @@ class RoomScreen extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     itemCount: bundle.resources.length,
                     itemBuilder: (context, index) {
-                      return ResourceCard(bundle.resources[index]);
+                      return ResourceCard(
+                        resource: bundle.resources[index],
+                        bundle: bundle,
+                        room: room,
+                      );
                     },
                   ),
                 ),

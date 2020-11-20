@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:stardrew_bundles/models/bundle.dart';
 import 'package:stardrew_bundles/models/bundles_data.dart';
 import 'package:stardrew_bundles/models/resource.dart';
 import 'package:provider/provider.dart';
+import 'package:stardrew_bundles/models/room.dart';
 
 class ResourceCard extends StatelessWidget {
   final Resource resource;
+  final Bundle bundle;
+  final Room room;
 
-  const ResourceCard(this.resource);
+  const ResourceCard({this.resource, this.bundle, this.room});
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +27,9 @@ class ResourceCard extends StatelessWidget {
             ? Colors.lightGreen
             : Colors.red[300],
         child: InkWell(
-          onTap: () =>
-              context.read<BundlesData>().toggleIsCompletedResource(resource),
+          onTap: () => context
+              .read<BundlesData>()
+              .toggleIsCompletedResource(resource, bundle, room),
           child: Column(
             children: [
               Expanded(
