@@ -33,7 +33,19 @@ class ResourceCard extends StatelessWidget {
           child: Column(
             children: [
               Expanded(
-                child: Center(child: Image.asset(resource.image)),
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(resource.image),
+                      if (resource.quantity > 1)
+                        Text(
+                          ' x${resource.quantity}',
+                          style: TextStyle(fontSize: 28.0),
+                        ),
+                    ],
+                  ),
+                ),
               ),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 4.0, vertical: 8.0),
