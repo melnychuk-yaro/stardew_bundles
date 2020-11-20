@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Resource with ChangeNotifier {
+class Resource {
   final String title;
   final String image;
   final int quantity;
@@ -15,6 +15,5 @@ class Resource with ChangeNotifier {
 
   void toggleIsCompleted() {
     isCompleted = !isCompleted;
-    notifyListeners();
   }
 }

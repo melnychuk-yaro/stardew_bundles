@@ -5,12 +5,22 @@ class Bundle {
   final String title;
   final String image;
   final List<Resource> resources;
-  bool isComleted;
+  bool isCompleted;
 
   Bundle({
     @required this.title,
     this.image = 'assets/images/bundles/Bundle_Green.png',
     this.resources,
-    this.isComleted = false,
+    this.isCompleted = false,
   });
+
+  void checkBundleIsCompleted() {
+    isCompleted = true;
+    for (final resource in resources) {
+      if (resource.isCompleted == false) {
+        isCompleted = false;
+        break;
+      }
+    }
+  }
 }

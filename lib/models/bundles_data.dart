@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:stardrew_bundles/models/bundle.dart';
 import 'package:stardrew_bundles/models/resource.dart';
 import 'package:stardrew_bundles/models/room.dart';
@@ -60,8 +60,17 @@ class BundlesData with ChangeNotifier {
   List<Room> get rooms => _rooms;
   int get roomsCount => _rooms.length;
 
-  void toggleResourceIsCompleted(Resource resource) {
+  void toggleIsCompletedResource(Resource resource) {
     resource.toggleIsCompleted();
     notifyListeners();
   }
+
+  bool isCompletedResource(Resource resource) => resource.isCompleted;
+
+  void checkBundleIsCompleted(Bundle bundle) {
+    bundle.checkBundleIsCompleted();
+    notifyListeners();
+  }
+
+  bool isCompletedBundle(Bundle bundle) => bundle.isCompleted;
 }

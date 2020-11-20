@@ -17,17 +17,14 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: ThemeData(
           primaryColor: Colors.lightGreen,
-          accentColor: Colors.blueGrey,
+          accentColor: Colors.lightGreen,
           scaffoldBackgroundColor: Colors.lightGreen[100],
-          primarySwatch: Colors.blueGrey,
+          primarySwatch: Colors.lightGreen,
           visualDensity: VisualDensity.adaptivePlatformDensity,
           fontFamily: 'VT323',
           splashFactory: InkRipple.splashFactory,
         ),
-        initialRoute: '/',
-        routes: {
-          '/': (_) => RoomsScreen(),
-        },
+        home: RoomsScreen(),
       ),
     );
   }

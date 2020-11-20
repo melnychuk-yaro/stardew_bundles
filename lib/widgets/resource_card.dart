@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stardrew_bundles/models/bundles_data.dart';
 import 'package:stardrew_bundles/models/resource.dart';
 import 'package:provider/provider.dart';
 
@@ -18,10 +19,12 @@ class ResourceCard extends StatelessWidget {
         ),
         margin: EdgeInsets.all(4.0),
         clipBehavior: Clip.antiAlias,
-        color:
-            context.watch<Resource>().isCompleted ? Colors.green : Colors.white,
+        color: context.watch<BundlesData>().isCompletedResource(resource)
+            ? Colors.lightGreen
+            : Colors.red[300],
         child: InkWell(
-          onTap: () => context.read<Resource>().toggleIsCompleted(),
+          onTap: () =>
+              context.read<BundlesData>().toggleIsCompletedResource(resource),
           child: Column(
             children: [
               Expanded(
