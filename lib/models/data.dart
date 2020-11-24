@@ -377,7 +377,7 @@ List<Map<String, dynamic>> data = [
           image: 'assets/images/bundles/Bundle_Yellow.png',
         ),
         'resources': [
-          Resource(title: 'Wheat ', quantity: 10),
+          Resource(title: 'Wheat', quantity: 10),
           Resource(title: 'Hay', quantity: 10),
           Resource(title: 'Apple', quantity: 3),
         ],
