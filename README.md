@@ -8,4 +8,5 @@ This flutter app helps to collect Community Center bundles in the Stardew Valley
 - all data is saving automatically to your device.
 
 Screenshots:
-![Screenshot Home Page](https://imagizer.imageshack.com/img922/1012/neIyRZ.jpg) ![Screenshot Room Page](https://imagizer.imageshack.com/img923/1513/2wa24Z.jpg)
+
+![Screenshot Home Page](https://imagizer.imageshack.com/img923/6518/URhUBi.jpg) ![Screenshot Room Page](https://imagizer.imageshack.com/img924/7496/gHX0uf.jpg)
