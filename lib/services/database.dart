@@ -94,18 +94,16 @@ class DBProvider {
 
   _insertInitialData(db) async {
     //insert rooms
-    await Future.forEach(data, (Map<String, dynamic> room) async {
-      final Room newRoom = await insertRoom(room['room'], db);
+    await Future.forEach(data, (Room room) async {
+      final Room newRoom = await insertRoom(room, db);
 
       //insert bundnles
-      await Future.forEach(room['bundles'],
-          (Map<String, dynamic> bundleMap) async {
-        Bundle bundle = bundleMap['bundle'];
+      await Future.forEach(room.bundles, (Bundle bundle) async {
         bundle.roomId = newRoom.id;
         final Bundle newBundle = await insertBundle(bundle, db);
 
         //insert resources
-        await Future.forEach(bundleMap['resources'], (Resource resource) async {
+        await Future.forEach(bundle.resources, (Resource resource) async {
           resource.roomId = newRoom.id;
           resource.bundleId = newBundle.id;
           insertResource(resource, db);
