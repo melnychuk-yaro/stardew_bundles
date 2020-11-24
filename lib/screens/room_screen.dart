@@ -15,40 +15,45 @@ class RoomScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(room.title)),
-      body: ListView.builder(
-        padding: const EdgeInsets.symmetric(vertical: 16.0),
-        itemCount: room.bundles.length,
-        itemBuilder: (context, index) {
-          Bundle bundle = room.bundles[index];
-          bool isBunleDone = context.watch<BundlesData>().isDoneBundle(bundle);
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ResourceTitle(
-                isBunleDone: isBunleDone,
-                room: room,
-                bundle: bundle,
-              ),
-              Container(
-                height: 216.0,
-                child: ListView.builder(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: bundle.resources.length,
-                  itemBuilder: (context, index) {
-                    return ResourceCard(
-                      resource: bundle.resources[index],
-                      bundle: bundle,
-                      room: room,
-                    );
-                  },
+      body: SafeArea(
+        right: false,
+        left: false,
+        child: ListView.builder(
+          padding: const EdgeInsets.symmetric(vertical: 16.0),
+          itemCount: room.bundles.length,
+          itemBuilder: (context, index) {
+            Bundle bundle = room.bundles[index];
+            bool isBunleDone =
+                context.watch<BundlesData>().isDoneBundle(bundle);
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ResourceTitle(
+                  isBunleDone: isBunleDone,
+                  room: room,
+                  bundle: bundle,
                 ),
-              ),
-              SizedBox(height: 8.0)
-            ],
-          );
-        },
+                Container(
+                  height: 216.0,
+                  child: ListView.builder(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+                    scrollDirection: Axis.horizontal,
+                    itemCount: bundle.resources.length,
+                    itemBuilder: (context, index) {
+                      return ResourceCard(
+                        resource: bundle.resources[index],
+                        bundle: bundle,
+                        room: room,
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(height: 8.0)
+              ],
+            );
+          },
+        ),
       ),
     );
   }

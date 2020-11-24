@@ -21,24 +21,28 @@ class _RoomsScreenState extends State<RoomsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Stardew Bundles')),
-      body: FutureBuilder<Object>(
-          future: null,
-          builder: (context, snapshot) {
-            return GridView.count(
-              padding: const EdgeInsets.all(8.0),
-              crossAxisCount: 2,
-              children: context.watch<BundlesData>().rooms.map((Room room) {
-                return InkWell(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => RoomScreen(room),
-                    ));
-                  },
-                  child: RoomCard(room),
+      body: SafeArea(
+        child: FutureBuilder<Object>(
+            future: null,
+            builder: (context, snapshot) {
+              return OrientationBuilder(builder: (context, orientation) {
+                return GridView.count(
+                  padding: const EdgeInsets.all(8.0),
+                  crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
+                  children: context.watch<BundlesData>().rooms.map((Room room) {
+                    return InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => RoomScreen(room),
+                        ));
+                      },
+                      child: RoomCard(room),
+                    );
+                  }).toList(),
                 );
-              }).toList(),
-            );
-          }),
+              });
+            }),
+      ),
     );
   }
 }
