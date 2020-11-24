@@ -14,14 +14,14 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          primaryColor: Colors.lightGreen,
-          accentColor: Colors.lightGreen,
-          scaffoldBackgroundColor: Colors.lightGreen[100],
-          primarySwatch: Colors.lightGreen,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-          fontFamily: 'VT323',
-          splashFactory: InkRipple.splashFactory,
-        ),
+            primaryColor: Colors.lightGreen,
+            accentColor: Colors.lightGreen,
+            scaffoldBackgroundColor: Colors.lightGreen[100],
+            primarySwatch: Colors.lightGreen,
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+            fontFamily: 'VT323',
+            splashFactory: InkRipple.splashFactory,
+            appBarTheme: AppBarTheme(centerTitle: true)),
         home: RoomsScreen(),
       ),
     );

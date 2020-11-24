@@ -13,7 +13,7 @@ class Resource {
   Resource({
     this.id,
     @required this.title,
-    this.image = 'assets/images/resources/wild_horseradish.png',
+    this.image,
     this.quantity = 1,
     this.done = false,
     this.bundleId,
@@ -47,5 +47,11 @@ class Resource {
 
   void toggleIsDone() {
     done = !done;
+  }
+
+  String get imageName {
+    if (image != null) return image;
+    String pathTitle = title.replaceAll(RegExp(' '), '_');
+    return 'assets/images/resources/24px-$pathTitle.png';
   }
 }

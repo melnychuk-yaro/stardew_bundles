@@ -28,8 +28,6 @@ class Room {
   }
 
   factory Room.fromMap(Map<String, dynamic> map) {
-    print('map');
-    print(map);
     return Room(
       id: map[DBProvider.roomsColumnId],
       title: map[DBProvider.roomsColumnTitle],

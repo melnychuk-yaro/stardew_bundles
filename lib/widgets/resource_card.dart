@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:stardrew_bundles/models/bundle.dart';
 import 'package:stardrew_bundles/models/bundles_data.dart';
@@ -37,7 +39,7 @@ class ResourceCard extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset(resource.image),
+                      Image.asset(resource.imageName),
                       if (resource.quantity > 1)
                         Text(
                           ' x${resource.quantity}',

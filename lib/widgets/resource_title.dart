@@ -22,11 +22,15 @@ class ResourceTitle extends StatelessWidget {
       visualDensity: VisualDensity(horizontal: -4),
       leading: Image.asset(bundle.image),
       title: Padding(
-        padding: const EdgeInsets.only(left: 12.0),
+        padding: const EdgeInsets.only(left: 6.0),
         child: Row(
           children: [
             Expanded(
-                child: Text(bundle.title, style: TextStyle(fontSize: 32.0))),
+              child: Text(
+                bundle.title,
+                style: TextStyle(fontSize: 28.0),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: isBunleDone
@@ -37,13 +41,18 @@ class ResourceTitle extends StatelessWidget {
         ),
       ),
       subtitle: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
         children: bundle.resources.map((Resource resource) {
-          return Checkbox(
-            value: context.watch<BundlesData>().isDoneResource(resource),
-            onChanged: (_) => context
-                .read<BundlesData>()
-                .toggleIsDoneResource(resource, bundle, room),
+          return Flexible(
+            child: SizedBox(
+              width: 32.0,
+              height: 32.0,
+              child: Checkbox(
+                value: context.watch<BundlesData>().isDoneResource(resource),
+                onChanged: (_) => context
+                    .read<BundlesData>()
+                    .toggleIsDoneResource(resource, bundle, room),
+              ),
+            ),
           );
         }).toList(),
       ),
