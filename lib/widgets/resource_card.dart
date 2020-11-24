@@ -23,13 +23,13 @@ class ResourceCard extends StatelessWidget {
         ),
         margin: EdgeInsets.all(4.0),
         clipBehavior: Clip.antiAlias,
-        color: context.watch<BundlesData>().isCompletedResource(resource)
+        color: context.watch<BundlesData>().isDoneResource(resource)
             ? Colors.lightGreen
             : Colors.red[300],
         child: InkWell(
           onTap: () => context
               .read<BundlesData>()
-              .toggleIsCompletedResource(resource, bundle, room),
+              .toggleIsDoneResource(resource, bundle, room),
           child: Column(
             children: [
               Expanded(

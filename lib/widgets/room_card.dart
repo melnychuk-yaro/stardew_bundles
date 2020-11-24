@@ -30,7 +30,7 @@ class RoomCard extends StatelessWidget {
               ),
             ),
           ),
-          if (room.isCompleted)
+          if (room.done)
             Container(
               color: Color(0x77FFFFFF),
               child: Center(

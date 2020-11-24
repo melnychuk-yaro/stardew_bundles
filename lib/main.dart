@@ -3,9 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:stardrew_bundles/models/bundles_data.dart';
 import 'package:stardrew_bundles/screens/rooms_screen.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() async => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
