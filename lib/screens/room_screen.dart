@@ -4,7 +4,7 @@ import 'package:stardrew_bundles/models/bundle.dart';
 import 'package:stardrew_bundles/models/bundles_data.dart';
 import 'package:stardrew_bundles/models/room.dart';
 import 'package:stardrew_bundles/widgets/resource_card.dart';
-import 'package:stardrew_bundles/widgets/resource_title.dart';
+import 'package:stardrew_bundles/widgets/bundle_title.dart';
 
 class RoomScreen extends StatelessWidget {
   final Room room;
@@ -28,16 +28,18 @@ class RoomScreen extends StatelessWidget {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ResourceTitle(
+                BundleTitle(
                   isBunleDone: isBunleDone,
                   room: room,
                   bundle: bundle,
                 ),
                 Container(
-                  height: 216.0,
+                  height: 200.0,
                   child: ListView.builder(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 12.0,
+                      vertical: 8.0,
+                    ),
                     scrollDirection: Axis.horizontal,
                     itemCount: bundle.resources.length,
                     itemBuilder: (context, index) {
