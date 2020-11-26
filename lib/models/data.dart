@@ -53,7 +53,7 @@ List<Room> data = [
           Resource(title: 'Wood', quantity: 99),
           Resource(title: 'Wood', quantity: 99),
           Resource(title: 'Stone', quantity: 99),
-          Resource(title: 'Hardwood', quantity: 99),
+          Resource(title: 'Hardwood', quantity: 10),
         ],
       ),
       Bundle(
