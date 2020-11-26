@@ -22,6 +22,7 @@ class DBProvider {
   static const String bundlesColumnTitle = 'title';
   static const String bundlesColumnImage = 'image';
   static const String bundlesColumnDone = 'done';
+  static const String bundlesColumnCountToComplete = 'count_to_complete';
   static const String bundlesColumnRoomId = 'room_id';
 
   static const String tableResources = 'resources';
@@ -51,15 +52,41 @@ class DBProvider {
     String path = join(documentsDirectory.path, 'stardew_bundles.db');
     Database database = await openDatabase(
       path,
-      version: 1,
+      version: 2,
       onCreate: _onCreate,
       onConfigure: _onConfigure,
+      onUpgrade: _onUpgrade,
     );
     return database;
   }
 
   static Future _onConfigure(Database db) async {
     await db.execute('PRAGMA foreign_keys = ON');
+  }
+
+  void _onUpgrade(Database db, int oldVersion, int newVersion) async {
+    if (oldVersion == 1) {
+      await db.execute('''
+        ALTER TABLE $tableBundles
+        ADD COLUMN $bundlesColumnCountToComplete INTEGER
+        DEFAULT 0
+      ''');
+
+      await Future.forEach(data, (Room room) async {
+        await Future.forEach(room.bundles, (Bundle bundle) async {
+          if (bundle.countToComplete > 0) {
+            db.rawUpdate(
+              '''
+                UPDATE $tableBundles
+                SET $bundlesColumnCountToComplete = ?
+                WHERE $bundlesColumnTitle = ?;
+              ''',
+              [bundle.countToComplete, bundle.title],
+            );
+          }
+        });
+      });
+    }
   }
 
   _onCreate(Database db, int version) async {
@@ -74,6 +101,7 @@ class DBProvider {
           $bundlesColumnId INTEGER PRIMARY KEY,
           $bundlesColumnTitle TEXT,
           $bundlesColumnImage TEXT,
+          $bundlesColumnCountToComplete INTEGER,
           $bundlesColumnDone INTEGER,
           $bundlesColumnRoomId INTEGER,
           FOREIGN KEY ($bundlesColumnRoomId) REFERENCES $tableRooms($roomsColumnId)
@@ -110,11 +138,12 @@ class DBProvider {
         });
       });
     });
-    print('finished insering initial data...');
   }
 
-  Future<List<Room>> getRooms() async {
-    final db = await database;
+  Future<List<Room>> getRooms([Database db]) async {
+    if (db == null) {
+      db = await database;
+    }
     List<Room> roomsList = [];
 
     var rooms = await db.query(tableRooms, columns: [
@@ -132,6 +161,32 @@ class DBProvider {
     return roomsList;
   }
 
+  Future<List<Bundle>> getBundles([Database db]) async {
+    if (db == null) {
+      db = await database;
+    }
+    List<Bundle> bundlesList = [];
+
+    var bundles = await db.query(
+      tableBundles,
+      columns: [
+        bundlesColumnId,
+        bundlesColumnTitle,
+        bundlesColumnImage,
+        bundlesColumnCountToComplete,
+        bundlesColumnDone,
+        bundlesColumnRoomId,
+      ],
+    );
+
+    bundles.forEach((currentBundle) {
+      Bundle bundle = Bundle.fromMap(currentBundle);
+      bundlesList.add(bundle);
+    });
+
+    return bundlesList;
+  }
+
   Future<List<Bundle>> getBundlesByRoomId(int roomId) async {
     final db = await database;
     List<Bundle> bundlesList = [];
@@ -142,6 +197,7 @@ class DBProvider {
         bundlesColumnId,
         bundlesColumnTitle,
         bundlesColumnImage,
+        bundlesColumnCountToComplete,
         bundlesColumnDone,
         bundlesColumnRoomId,
       ],

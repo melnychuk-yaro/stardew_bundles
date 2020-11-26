@@ -59,6 +59,7 @@ List<Room> data = [
       Bundle(
         title: 'Exotic Foraging Bundle',
         image: 'assets/images/bundles/Bundle_Purple.png',
+        countToComplete: 5,
         resources: [
           Resource(title: 'Coconut'),
           Resource(title: 'Cactus Fruit'),
@@ -110,6 +111,7 @@ List<Room> data = [
       Bundle(
         title: 'Quality Crops Bundle',
         image: 'assets/images/bundles/Bundle_Teal.png',
+        countToComplete: 3,
         resources: [
           Resource(
             title: 'Parsnip (Gold)',
@@ -136,6 +138,7 @@ List<Room> data = [
       Bundle(
         title: 'Animal Bundle',
         image: 'assets/images/bundles/Bundle_Red.png',
+        countToComplete: 5,
         resources: [
           Resource(title: 'Large Milk'),
           Resource(
@@ -151,6 +154,7 @@ List<Room> data = [
       Bundle(
         title: 'Artisan Bundle',
         image: 'assets/images/bundles/Bundle_Purple.png',
+        countToComplete: 6,
         resources: [
           Resource(title: 'Truffle Oil'),
           Resource(title: 'Cloth'),
@@ -215,6 +219,7 @@ List<Room> data = [
       Bundle(
         title: 'Crab Pot Bundle',
         image: 'assets/images/bundles/Bundle_Purple.png',
+        countToComplete: 5,
         resources: [
           Resource(title: 'Lobster'),
           Resource(title: 'Crayfish'),
@@ -266,6 +271,7 @@ List<Room> data = [
       Bundle(
         title: 'Adventurer\'s Bundle',
         image: 'assets/images/bundles/Bundle_Purple.png',
+        countToComplete: 2,
         resources: [
           Resource(title: 'Slime', quantity: 99),
           Resource(title: 'Bat Wing', quantity: 10),
@@ -385,6 +391,7 @@ List<Room> data = [
       Bundle(
         title: 'The Missing Bundle',
         image: 'assets/images/bundles/Bundle_Purple.png',
+        countToComplete: 5,
         resources: [
           Resource(
             title: 'Silver or better quality Wine (any)',

@@ -6,6 +6,7 @@ class Bundle {
   int id;
   final String title;
   final String image;
+  final int countToComplete;
   List<Resource> resources;
   bool done;
   int roomId;
@@ -14,6 +15,7 @@ class Bundle {
     this.id,
     @required this.title,
     this.image = 'assets/images/bundles/Bundle_Green.png',
+    this.countToComplete = 0,
     this.resources,
     this.done = false,
     this.roomId,
@@ -24,6 +26,7 @@ class Bundle {
         title: map[DBProvider.bundlesColumnTitle],
         image: map[DBProvider.bundlesColumnImage],
         roomId: map[DBProvider.bundlesColumnRoomId],
+        countToComplete: map[DBProvider.bundlesColumnCountToComplete],
         done: map[DBProvider.bundlesColumnDone] == 1 ? true : false,
       );
 
@@ -32,6 +35,7 @@ class Bundle {
       DBProvider.bundlesColumnTitle: title,
       DBProvider.bundlesColumnImage: image,
       DBProvider.bundlesColumnRoomId: roomId,
+      DBProvider.bundlesColumnCountToComplete: countToComplete,
       DBProvider.bundlesColumnDone: done ? 1 : 0,
     };
     if (id != null) {
@@ -42,12 +46,14 @@ class Bundle {
   }
 
   void checkBundleDone() {
-    done = true;
-    for (final resource in resources) {
-      if (resource.done == false) {
-        done = false;
-        break;
+    int completed = 0;
+    int itemsToComplete =
+        countToComplete > 0 ? countToComplete : resources.length;
+    for (final Resource resource in resources) {
+      if (resource.done == true) {
+        completed++;
       }
     }
+    done = completed >= itemsToComplete ? true : false;
   }
 }
