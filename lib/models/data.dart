@@ -213,7 +213,6 @@ List<Room> data = [
           Resource(title: 'Walleye'),
           Resource(title: 'Bream'),
           Resource(title: 'Eel'),
-          Resource(title: 'Tilapia'),
         ],
       ),
       Bundle(
