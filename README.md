@@ -9,4 +9,4 @@
 
 ### Screenshots:
 
-![Screenshot Home Page](https://imagizer.imageshack.com/img923/6518/URhUBi.jpg) ![Screenshot Room Page](https://imagizer.imageshack.com/img924/7496/gHX0uf.jpg)
+![Screenshot Home Page](https://user-images.githubusercontent.com/74709638/109878704-4aa4c280-7c7d-11eb-88d7-daa94e53cab3.png) ![Screenshot Room Page](https://user-images.githubusercontent.com/74709638/109878604-2c3ec700-7c7d-11eb-8946-b97554c07133.png)
