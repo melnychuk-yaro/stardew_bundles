@@ -1,18 +1,17 @@
-import 'package:flutter/material.dart';
 import 'package:stardrew_bundles/services/database.dart';
 
 class Resource {
-  int id;
+  int? id;
   final String title;
-  final String image;
+  final String? image;
   final int quantity;
-  int bundleId;
-  int roomId;
+  int? bundleId;
+  int? roomId;
   bool done;
 
   Resource({
     this.id,
-    @required this.title,
+    required this.title,
     this.image,
     this.quantity = 1,
     this.done = false,
@@ -49,7 +48,7 @@ class Resource {
     done = !done;
   }
 
-  String get imageName {
+  String? get imageName {
     if (image != null) return image;
     String pathTitle = title.replaceAll(RegExp(' '), '_');
     return 'assets/images/resources/24px-$pathTitle.png';

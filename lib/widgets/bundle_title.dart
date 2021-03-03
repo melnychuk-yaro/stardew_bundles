@@ -7,9 +7,9 @@ import 'package:provider/provider.dart';
 
 class BundleTitle extends StatelessWidget {
   const BundleTitle({
-    @required this.bundle,
-    @required this.room,
-    @required this.isBunleDone,
+    required this.bundle,
+    required this.room,
+    required this.isBunleDone,
   });
 
   final Bundle bundle;

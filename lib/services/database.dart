@@ -34,11 +34,13 @@ class DBProvider {
   static const String resourcesColumnBundleId = 'bundle_id';
   static const String resourcesColumnRoomId = 'room_id';
 
-  static Database _database;
+  static Database? _database;
+
   Future<Database> get database async {
-    if (_database != null) return _database;
-    _database = await initDB();
-    return _database;
+    if (_database == null) {
+      return await initDB();
+    }
+    return _database!;
   }
 
   deleteDB() async {
@@ -140,7 +142,7 @@ class DBProvider {
     });
   }
 
-  Future<List<Room>> getRooms([Database db]) async {
+  Future<List<Room>> getRooms([Database? db]) async {
     if (db == null) {
       db = await database;
     }
@@ -161,7 +163,7 @@ class DBProvider {
     return roomsList;
   }
 
-  Future<List<Bundle>> getBundles([Database db]) async {
+  Future<List<Bundle>> getBundles([Database? db]) async {
     if (db == null) {
       db = await database;
     }
@@ -187,7 +189,7 @@ class DBProvider {
     return bundlesList;
   }
 
-  Future<List<Bundle>> getBundlesByRoomId(int roomId) async {
+  Future<List<Bundle>> getBundlesByRoomId(int? roomId) async {
     final db = await database;
     List<Bundle> bundlesList = [];
 
@@ -213,7 +215,7 @@ class DBProvider {
     return bundlesList;
   }
 
-  Future<List<Resource>> getResourcesByBundleId(int bundleId) async {
+  Future<List<Resource>> getResourcesByBundleId(int? bundleId) async {
     final db = await database;
     List<Resource> resourcesList = [];
 
@@ -240,7 +242,7 @@ class DBProvider {
     return resourcesList;
   }
 
-  Future<Room> insertRoom(Room room, [Database db]) async {
+  Future<Room> insertRoom(Room room, [Database? db]) async {
     if (db == null) {
       db = await database;
     }
@@ -248,7 +250,7 @@ class DBProvider {
     return room;
   }
 
-  Future<Bundle> insertBundle(Bundle bundle, [Database db]) async {
+  Future<Bundle> insertBundle(Bundle bundle, [Database? db]) async {
     if (db == null) {
       db = await database;
     }
@@ -256,7 +258,7 @@ class DBProvider {
     return bundle;
   }
 
-  Future<Resource> insertResource(Resource resource, [Database db]) async {
+  Future<Resource> insertResource(Resource resource, [Database? db]) async {
     if (db == null) {
       db = await database;
     }

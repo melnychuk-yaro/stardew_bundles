@@ -10,7 +10,11 @@ class ResourceCard extends StatelessWidget {
   final Bundle bundle;
   final Room room;
 
-  const ResourceCard({this.resource, this.bundle, this.room});
+  const ResourceCard({
+    required this.resource,
+    required this.bundle,
+    required this.room,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +41,7 @@ class ResourceCard extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset(resource.imageName),
+                      Image.asset(resource.imageName!),
                       if (resource.quantity > 1)
                         Text(
                           ' x${resource.quantity}',

@@ -1,22 +1,21 @@
-import 'package:flutter/material.dart';
 import 'package:stardrew_bundles/models/resource.dart';
 import 'package:stardrew_bundles/services/database.dart';
 
 class Bundle {
-  int id;
+  int? id;
   final String title;
   final String image;
   final int countToComplete;
   List<Resource> resources;
   bool done;
-  int roomId;
+  int? roomId;
 
   Bundle({
     this.id,
-    @required this.title,
+    required this.title,
     this.image = 'assets/images/bundles/Bundle_Green.png',
     this.countToComplete = 0,
-    this.resources,
+    required this.resources,
     this.done = false,
     this.roomId,
   });
@@ -28,6 +27,7 @@ class Bundle {
         roomId: map[DBProvider.bundlesColumnRoomId],
         countToComplete: map[DBProvider.bundlesColumnCountToComplete],
         done: map[DBProvider.bundlesColumnDone] == 1 ? true : false,
+        resources: <Resource>[],
       );
 
   Map<String, dynamic> toMap() {

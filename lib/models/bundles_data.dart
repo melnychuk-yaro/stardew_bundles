@@ -27,7 +27,7 @@ class BundlesData with ChangeNotifier {
   }
 
   Future<void> getRooms() async {
-    List<Room> rooms = await DBProvider.db.getRooms();
+    final List<Room> rooms = await DBProvider.db.getRooms();
     for (Room room in rooms) {
       List<Bundle> bundles = await DBProvider.db.getBundlesByRoomId(room.id);
       room.bundles = bundles;

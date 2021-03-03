@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:stardrew_bundles/models/bundle.dart';
 import 'package:stardrew_bundles/services/database.dart';
 
 class Room {
-  int id;
+  int? id;
   final String title;
   final String image;
   bool done;
@@ -11,10 +10,10 @@ class Room {
 
   Room({
     this.id,
-    @required this.title,
+    required this.title,
     this.image = 'assets/images/rooms/Community_Center_Crafts_Room.png',
     this.done = false,
-    this.bundles,
+    required this.bundles,
   });
 
   void checkRoomIsDone() {
@@ -33,6 +32,7 @@ class Room {
       title: map[DBProvider.roomsColumnTitle],
       image: map[DBProvider.roomsColumnImage],
       done: map[DBProvider.roomsColumnDone] == 1 ? true : false,
+      bundles: <Bundle>[],
     );
   }
 
