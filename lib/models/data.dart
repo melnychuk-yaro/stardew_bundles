@@ -329,7 +329,7 @@ List<Room> data = [
         ),
         Bundle(
           title: 'Enchanter\'s Bundle',
-          image: 'assets/images/bundles/Bundle_Blue.png',
+          image: 'assets/images/bundles/Bundle_Purple.png',
           resources: [
             Resource(title: 'Oak Resin'),
             Resource(title: 'Wine'),
